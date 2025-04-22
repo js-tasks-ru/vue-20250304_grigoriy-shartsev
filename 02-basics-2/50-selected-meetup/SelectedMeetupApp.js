@@ -5,13 +5,13 @@ export default defineComponent({
   name: 'SelectedMeetupApp',
 
   setup() {
-    const minMeetupId = 1;
-    const maxMeetupId = 5;
+    const minMeetupId = 1
+    const maxMeetupId = 5
     const meetupId = ref(minMeetupId)
-    const meetup = ref({})
+    const meetup = ref(null)
 
     watch(meetupId, async () => {
-      meetup.value = await getMeetup(meetupId.value);
+      meetup.value = await getMeetup(meetupId.value)
     }, { immediate: true })
 
     return {
@@ -96,7 +96,7 @@ export default defineComponent({
 
       <div class="meetup-selector__cover">
         <div class="meetup-cover">
-          <h1 class="meetup-cover__title"> {{ meetup.title }}</h1>
+          <h1 class="meetup-cover__title"> {{ meetup?.title }}</h1>
         </div>
       </div>
 
